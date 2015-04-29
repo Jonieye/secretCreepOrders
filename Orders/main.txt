@@ -1,0 +1,26 @@
+// Your code goes here...
+var spawn = require('create_minions');
+var harvester = require('harvester');
+var builder  = require('builder')
+var roles = require('assignroles');
+var guard = require('guards');
+
+spawn();
+
+
+for(var name in Game.creeps) {
+	var creep = Game.creeps[name];
+	if (creep.memory.role == null) {
+	    roles(creep);
+	}
+	if(creep.memory.role == 'harvester') {
+		harvester(creep);
+	}
+
+	else if(creep.memory.role == 'builder') {
+	    builder(creep);
+	}
+	else if(creep.memory.role == 'guard') {
+    	guard(creep);
+	}
+}
